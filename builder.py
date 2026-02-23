@@ -1,31 +1,29 @@
-class Pizza:
+class Computer:
     def __init__(self):
-        self.dough = None
-        self.sauce = None
-        self.topping = None
+        self.parts = []
 
-    def __str__(self):
-        return f"Pizza with {self.dough} dough, {self.sauce} sauce, {self.topping} topping"
+    def add(self, part):
+        self.parts.append(part)
 
-class PizzaBuilder:
+    def show(self):
+        print("Компьютер состоит из:", ", ".join(self.parts))
+
+class ComputerBuilder:
     def __init__(self):
-        self.pizza = Pizza()
+        self.computer = Computer()
 
-    def set_dough(self, dough):
-        self.pizza.dough = dough
-        return self
+    def add_cpu(self):
+        self.computer.add("CPU")
 
-    def set_sauce(self, sauce):
-        self.pizza.sauce = sauce
-        return self
+    def add_gpu(self):
+        self.computer.add("GPU")
 
-    def set_topping(self, topping):
-        self.pizza.topping = topping
-        return self
+    def get_result(self):
+        return self.computer
 
-    def build(self):
-        return self.pizza
+builder = ComputerBuilder()
+builder.add_cpu()
+builder.add_gpu()
 
-if __name__ == "__main__":
-    pizza = PizzaBuilder().set_dough("thin").set_sauce("tomato").set_topping("cheese").build()
-    print(pizza)
+pc = builder.get_result()
+pc.show()
