@@ -1,25 +1,22 @@
-class Animal:
-    def speak(self):
+class Car:
+    def drive(self):
         pass
 
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
+class Tesla(Car):
+    def drive(self):
+        print("Еду на Tesla")
 
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
+class BMW(Car):
+    def drive(self):
+        print("Еду на BMW")
 
-def animal_factory(animal_type):
-    if animal_type == "dog":
-        return Dog()
-    elif animal_type == "cat":
-        return Cat()
-    else:
-        raise ValueError("Unknown animal type")
+class CarFactory:
+    def create_car(self, type_):
+        if type_ == "tesla":
+            return Tesla()
+        elif type_ == "bmw":
+            return BMW()
 
-if __name__ == "__main__":
-    dog = animal_factory("dog")
-    cat = animal_factory("cat")
-    print(dog.speak())
-    print(cat.speak())
+factory = CarFactory()
+car = factory.create_car("tesla")
+car.drive()
